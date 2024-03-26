@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date in diversi formati</title>
+  </head>
+  <body>
+    <script>
+      const oggi = new Date();
+
+      const options = [
+        (locales = "en-US"),
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          weekday: "long",
+        },
+        {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        },
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        },
+      ];
+
+      options.forEach((option) => {
+        let locales = options[0];
+        const element = document.createElement("h2");
+        const dataFormat = oggi.toLocaleString(locales, option);
+        const text = document.createTextNode(dataFormat);
+        element.appendChild(text);
+        document.querySelector("body").appendChild(element);
+      });
+    </script>
+  </body>
+</html>
